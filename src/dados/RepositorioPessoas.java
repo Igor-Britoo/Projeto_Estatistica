@@ -1,15 +1,19 @@
 package dados;
 
 import java.util.ArrayList;
+
 import beans.Pessoa;
 import exceptions.PessoaJaExisteException;
-import exceptions.PessoaNaoExisteException;
 
 public class RepositorioPessoas {
+	//Armazena os dados num arquivo para manipula-los em java
 	private ArrayList<Pessoa> repositorioPessoas;
+	//Armazena os dados num arquivo para utiliza-los no R
+	private ArrayList<String> repositorioString;
 	
 	public RepositorioPessoas() {
-		this.repositorioPessoas = new ArrayList<Pessoa>();
+    	this.repositorioPessoas = new ArrayList<Pessoa>();
+		this.repositorioString = new ArrayList<String>();
 	}
 
 	public ArrayList<Pessoa> getRepositorioPessoas() {
@@ -19,17 +23,21 @@ public class RepositorioPessoas {
 		this.repositorioPessoas = repositorioPessoas;
 	}
 	
+	public ArrayList<String> getRepositorioString() {
+		return repositorioString;
+	} 	
+
+	public void setRepositorioString(ArrayList<String> repositorioString) {
+		this.repositorioString = repositorioString;
+	}
+
 	public void adicionarPessoa(Pessoa pessoa) throws PessoaJaExisteException{
-		if(!this.existePessoa(pessoa))this.repositorioPessoas.add(pessoa);
+		if(!this.existePessoa(pessoa)) {
+			this.repositorioPessoas.add(pessoa);
+			this.repositorioString.add(pessoa.toString());
+		}
 		else {
 			throw new PessoaJaExisteException(pessoa);
-		}
-	}
-	
-	public void removerPessoa(Pessoa pessoa) throws PessoaNaoExisteException{
-		if(this.existePessoa(pessoa))this.repositorioPessoas.remove(pessoa);
-		else {
-			throw new PessoaNaoExisteException(pessoa);
 		}
 	}
 	
@@ -49,7 +57,5 @@ public class RepositorioPessoas {
 		}
 		return existe;
 	}
-	
-	
-	
+
 }

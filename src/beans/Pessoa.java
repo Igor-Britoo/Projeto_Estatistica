@@ -7,16 +7,16 @@ public class Pessoa {
 	private Raca raca;
 	private Escolaridade escolaridade;
 	private String profissao;
-	private double salario;
+	private float salario;
 	private int numViagensAoExterior;
 	private int numFilhos;
-	private double altura;
-	private double peso;
+	private float altura;
+	private float peso;
 	
 	public Pessoa() {};
 	
-	public Pessoa(int cpf, int idade, Sexo sexo, Raca raca, Escolaridade escolaridade, String profissao, double salario,
-			int numViagensAoExterior, int numFilhos, double altura, double peso) {
+	public Pessoa(int cpf, int idade, Sexo sexo, Raca raca, Escolaridade escolaridade, String profissao, float salario,
+			int numViagensAoExterior, int numFilhos, float altura, float peso) {
 		this.cpf = cpf;
 		this.idade = idade;
 		this.sexo = sexo;
@@ -66,10 +66,10 @@ public class Pessoa {
 	public void setProfissao(String profissao) {
 		this.profissao = profissao;
 	}
-	public double getSalario() {
+	public float getSalario() {
 		return salario;
 	}
-	public void setSalario(double salario) {
+	public void setSalario(float salario) {
 		this.salario = salario;
 	}
 	public int getNumViagensAoExterior() {
@@ -84,16 +84,16 @@ public class Pessoa {
 	public void setNumFilhos(int numFilhos) {
 		this.numFilhos = numFilhos;
 	}
-	public double getAltura() {
+	public float getAltura() {
 		return altura;
 	}
-	public void setAltura(double altura) {
+	public void setAltura(float altura) {
 		this.altura = altura;
 	}
-	public double getPeso() {
+	public float getPeso() {
 		return peso;
 	}
-	public void setPeso(double peso) {
+	public void setPeso(float peso) {
 		this.peso = peso;
 	}
 
@@ -110,9 +110,4 @@ public class Pessoa {
 		Pessoa p = (Pessoa)obj;
 		return this.cpf == p.getCpf();
 	}
-	
-	
-	
-	
-	
 }
