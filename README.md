@@ -1,5 +1,6 @@
 # Projeto de Estatistica
 Projeto da disciplina de Estatística Exploratória I pela Universidade Federal Rural de Pernambuco.
+
 Nesse projeto foram utilizadas as linguagens R e Java
 
 ## Descrição geral do projeto 
