@@ -68,6 +68,9 @@ public class RepositorioFileUtil {
 		try {
 			fw = new FileWriter(repositoriotxt);
 			bw = new BufferedWriter(fw);
+			bw.write("     CPF     ,  Idade  ,     Sexo     ,   Raca   ,          Escolaridade"
+					+ "          ,       Profissao      ,   Salario   ,  Num. Viagens ao Exterior  "
+					+ ",  Num.de Filhos  ,  Altura  , Peso \n");
 			for(Pessoa p: repositorioPessoas.listar()) {
 				bw.write(p.toString());
 				bw.newLine();

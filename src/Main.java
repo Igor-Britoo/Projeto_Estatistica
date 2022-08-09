@@ -168,6 +168,7 @@ public class Main {
 	public static void main(String[] args) {
 		
 		RepositorioPessoas repositorioPessoas = new RepositorioPessoas("repositorio-pessoas");
+		
 		Scanner input = new Scanner(System.in);
 		boolean whileCondicional = true;
 		
@@ -185,7 +186,7 @@ public class Main {
 			if(num!=1)whileCondicional = false;
 		}
 		input.close();
-				
+		
 		File repositoriotxt = new File("repositorio.txt");
 		RepositorioFileUtil.criarArquivoStrings(repositoriotxt, repositorioPessoas);
 		System.out.println(RepositorioFileUtil.lerArquivoStrings(repositoriotxt));

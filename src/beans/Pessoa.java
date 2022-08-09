@@ -3,6 +3,8 @@ package beans;
 import java.io.Serializable;
 
 public class Pessoa implements Serializable{
+	private static final long serialVersionUID = 2313373446920284592L;
+	
 	private int cpf;
 	private int idade;
 	private Sexo sexo;
@@ -101,10 +103,11 @@ public class Pessoa implements Serializable{
 
 	@Override
 	public String toString() {
-		return this.cpf + " , " + this.idade + " , " + this.sexo.getSexo() + " , " +
-				this.raca.getRaca() + " , " + this.escolaridade.getEscolaridade() + " , " + 
-				this.profissao + " , " + this.salario + " , " + this.numViagensAoExterior + 
-				" , " + this.numFilhos + " , " + this.altura + " , " + this.peso;
+		return String.format("%12s , %7d , %-12s , %-8s , %-30s , %-20s , %11s , %26d , %15d , %8s , %5s", 
+				this.cpf, this.idade, this.sexo.getSexo(), this.raca.getRaca(), 
+				this.escolaridade.getEscolaridade(), this.profissao, this.salario,
+				this.numViagensAoExterior, this.numFilhos, this.altura, this.peso);
+		
 	}
 
 	@Override
