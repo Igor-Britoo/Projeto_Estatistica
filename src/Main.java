@@ -191,38 +191,6 @@ public class Main {
 		RepositorioFileUtil.criarArquivoStrings(repositoriotxt, repositorioPessoas);
 		System.out.println(RepositorioFileUtil.lerArquivoStrings(repositoriotxt));
 		
-		
-		/*DEBUG///////////////////////////////////////////////////////////////////////////////////////
-		 
-		RepositorioPessoas repositorioPessoas = new RepositorioPessoas("repositorio-pessoas");
-		File repositoriotxt = new File("repositorio.txt");
-		
-		Pessoa p1 = new Pessoa(18, 10, Sexo.MASCULINO, Raca.INDIGENA, Escolaridade.SUPERIOR_COMPLETO,
-								"jogador", 1500, 2, 0, 2, 69);
-		Pessoa p2 = new Pessoa(7, 10, Sexo.MASCULINO, Raca.INDIGENA, Escolaridade.SUPERIOR_COMPLETO,
-								"programador", 1500, 2, 0, 1, 68);
-		Pessoa p3 = new Pessoa(1, 10, Sexo.MASCULINO, Raca.INDIGENA, Escolaridade.SUPERIOR_COMPLETO,
-								"Desenvolvedor", 1500, 2, 0, 1, 70);
-		Pessoa p4 = new Pessoa(2, 10, Sexo.MASCULINO, Raca.INDIGENA, Escolaridade.SUPERIOR_COMPLETO,
-								"Padeiro", 1500, 2, 0, 2, 65);
-		
-		try {
-			repositorioPessoas.adicionarPessoa(p1);
-			repositorioPessoas.adicionarPessoa(p2);
-			repositorioPessoas.adicionarPessoa(p3);
-			repositorioPessoas.adicionarPessoa(p4);
-		} catch (PessoaJaExisteException e) {
-			e.printStackTrace();
-		}
-		
-		for(Pessoa p : repositorioPessoas.listar()) {
-			System.out.println(p.toString());
-		}
-		System.out.println("\n///////////////////////////////////////\n");
-		RepositorioFileUtil.criarArquivoStrings(repositoriotxt, repositorioPessoas);
-		System.out.println(RepositorioFileUtil.lerArquivoStrings(repositoriotxt));
-	*/
-		
 	}
 
 }

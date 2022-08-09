@@ -107,18 +107,34 @@ histogramaPesos <-hist(tabela$Peso, col="darkblue", border="black", prob=FALSE, 
                   xlab="Pesos", ylab="Densidade");
 
 #SEXO/////////////////////////////////////////////////////////////////////
+print(table(tabela$Sexo)) #frequencia absoluta
+print(table(tabela$Sexo)/tamanhoAmostra) #frequencia relativa
+print(table(tabela$Sexo)/tamanhoAmostra*100) #frequencia percentual
+
 barplot(table(tabela$Sexo), col="darkblue", border="black", main = "Grafico Sexos")
 pie(table(tabela$Sexo))
 
 #RACA/////////////////////////////////////////////////////////////////////
+print(table(tabela$Raca)) #frequencia absoluta
+print(table(tabela$Raca)/tamanhoAmostra) #frequencia relativa
+print(table(tabela$Raca)/tamanhoAmostra*100) #frequencia percentual
+
 barplot(table(tabela$Raca), col="darkblue", border="black", main = "Grafico Raças")
 pie(table(tabela$Raca))
 
 #ESCOLARIDADE/////////////////////////////////////////////////////////////
+print(table(tabela$Escolaridade)) #frequencia absoluta
+print(table(tabela$Escolaridade)/tamanhoAmostra) #frequencia relativa
+print(table(tabela$Escolaridade)/tamanhoAmostra*100) #frequencia percentual
+
 barplot(table(tabela$Escolaridade), col="darkblue", border="black", main = "Grafico Escolaridades")
 pie(table(tabela$Escolaridade))
 
 #PROFISSAO////////////////////////////////////////////////////////////////
+print(table(tabela$Profissao)) #frequencia absoluta
+print(table(tabela$Profissao)/tamanhoAmostra) #frequencia relativa
+print(table(tabela$Profissao)/tamanhoAmostra*100) #frequencia percentual
+
 pie(table(tabela$Profissao))
 
 
