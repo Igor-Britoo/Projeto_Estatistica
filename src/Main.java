@@ -1,3 +1,4 @@
+import java.io.File;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -5,6 +6,7 @@ import beans.Escolaridade;
 import beans.Pessoa;
 import beans.Raca;
 import beans.Sexo;
+import dados.RepositorioFileUtil;
 import dados.RepositorioPessoas;
 import exceptions.PessoaJaExisteException;
 
@@ -164,9 +166,8 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
-		RepositorioPessoas repositorioPessoas = new RepositorioPessoas();
+		RepositorioPessoas repositorioPessoas = new RepositorioPessoas("repositorio-pessoas");
 		Scanner input = new Scanner(System.in);
 		boolean whileCondicional = true;
 		
@@ -177,7 +178,6 @@ public class Main {
 			try {
 				repositorioPessoas.adicionarPessoa(p);
 			} catch (PessoaJaExisteException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			System.out.println("Digite 1 para cadastrar outra pessoa\n");
@@ -185,12 +185,21 @@ public class Main {
 			if(num!=1)whileCondicional = false;
 		}
 		input.close();
+				
+		File repositoriotxt = new File("repositorio.txt");
+		RepositorioFileUtil.criarArquivoStrings(repositoriotxt, repositorioPessoas);
+		System.out.println(RepositorioFileUtil.lerArquivoStrings(repositoriotxt));
 		
-		/* DEBUG
-		Pessoa p1 = new Pessoa(11, 10, Sexo.MASCULINO, Raca.INDIGENA, Escolaridade.SUPERIOR_COMPLETO,
-								"Padeiro", 1500, 2, 0, 2, 69);
-		Pessoa p2 = new Pessoa(9, 10, Sexo.MASCULINO, Raca.INDIGENA, Escolaridade.SUPERIOR_COMPLETO,
-								"Pedreiro", 1500, 2, 0, 1, 68);
+		
+		/*DEBUG///////////////////////////////////////////////////////////////////////////////////////
+		 
+		RepositorioPessoas repositorioPessoas = new RepositorioPessoas("repositorio-pessoas");
+		File repositoriotxt = new File("repositorio.txt");
+		
+		Pessoa p1 = new Pessoa(18, 10, Sexo.MASCULINO, Raca.INDIGENA, Escolaridade.SUPERIOR_COMPLETO,
+								"jogador", 1500, 2, 0, 2, 69);
+		Pessoa p2 = new Pessoa(7, 10, Sexo.MASCULINO, Raca.INDIGENA, Escolaridade.SUPERIOR_COMPLETO,
+								"programador", 1500, 2, 0, 1, 68);
 		Pessoa p3 = new Pessoa(1, 10, Sexo.MASCULINO, Raca.INDIGENA, Escolaridade.SUPERIOR_COMPLETO,
 								"Desenvolvedor", 1500, 2, 0, 1, 70);
 		Pessoa p4 = new Pessoa(2, 10, Sexo.MASCULINO, Raca.INDIGENA, Escolaridade.SUPERIOR_COMPLETO,
@@ -202,12 +211,17 @@ public class Main {
 			repositorioPessoas.adicionarPessoa(p3);
 			repositorioPessoas.adicionarPessoa(p4);
 		} catch (PessoaJaExisteException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		repositorioPessoas.listarPessoas();
-		*/
+		for(Pessoa p : repositorioPessoas.listar()) {
+			System.out.println(p.toString());
+		}
+		System.out.println("\n///////////////////////////////////////\n");
+		RepositorioFileUtil.criarArquivoStrings(repositoriotxt, repositorioPessoas);
+		System.out.println(RepositorioFileUtil.lerArquivoStrings(repositoriotxt));
+	*/
+		
 	}
 
 }

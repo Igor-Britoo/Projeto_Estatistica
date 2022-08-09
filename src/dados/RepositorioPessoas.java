@@ -1,6 +1,8 @@
 package dados;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import beans.Pessoa;
 import exceptions.PessoaJaExisteException;
@@ -8,12 +10,18 @@ import exceptions.PessoaJaExisteException;
 public class RepositorioPessoas {
 	//Armazena os dados num arquivo para manipula-los em java
 	private ArrayList<Pessoa> repositorioPessoas;
-	//Armazena os dados num arquivo para utiliza-los no R
-	private ArrayList<String> repositorioString;
+	private String filename;
 	
-	public RepositorioPessoas() {
+	@SuppressWarnings("unchecked")
+	public RepositorioPessoas(String filename) {
     	this.repositorioPessoas = new ArrayList<Pessoa>();
-		this.repositorioString = new ArrayList<String>();
+    	this.filename = filename;
+    	
+    	Object listaPessoas = RepositorioFileUtil.lerArquivoPessoas(this.filename); 
+        
+        if (listaPessoas != null && listaPessoas instanceof List<?>){
+            this.repositorioPessoas = (ArrayList<Pessoa>) listaPessoas;
+        }
 	}
 
 	public ArrayList<Pessoa> getRepositorioPessoas() {
@@ -23,22 +31,20 @@ public class RepositorioPessoas {
 		this.repositorioPessoas = repositorioPessoas;
 	}
 	
-	public ArrayList<String> getRepositorioString() {
-		return repositorioString;
-	} 	
-
-	public void setRepositorioString(ArrayList<String> repositorioString) {
-		this.repositorioString = repositorioString;
-	}
 
 	public void adicionarPessoa(Pessoa pessoa) throws PessoaJaExisteException{
 		if(!this.existePessoa(pessoa)) {
 			this.repositorioPessoas.add(pessoa);
-			this.repositorioString.add(pessoa.toString());
 		}
 		else {
 			throw new PessoaJaExisteException(pessoa);
 		}
+		RepositorioFileUtil.salvarArquivoPessoas(repositorioPessoas, this.filename);
+
+	}
+	
+	public List<Pessoa> listar() {
+		return Collections.unmodifiableList(this.repositorioPessoas);
 	}
 	
 	public void listarPessoas() {
@@ -57,5 +63,4 @@ public class RepositorioPessoas {
 		}
 		return existe;
 	}
-
 }

@@ -1,0 +1,8 @@
+11 , 10 , Masculino , Indigena , Ensino Superior Completo , Padeiro , 1500.0 , 2 , 0 , 2.0 , 69.0
+9 , 10 , Masculino , Indigena , Ensino Superior Completo , Pedreiro , 1500.0 , 2 , 0 , 1.0 , 68.0
+1 , 10 , Masculino , Indigena , Ensino Superior Completo , Desenvolvedor , 1500.0 , 2 , 0 , 1.0 , 70.0
+2 , 10 , Masculino , Indigena , Ensino Superior Completo , Padeiro , 1500.0 , 2 , 0 , 2.0 , 65.0
+18 , 10 , Masculino , Indigena , Ensino Superior Completo , jogador , 1500.0 , 2 , 0 , 2.0 , 69.0
+7 , 10 , Masculino , Indigena , Ensino Superior Completo , programador , 1500.0 , 2 , 0 , 1.0 , 68.0
+111111111 , 25 , Feminino , Pardo , Ensino Superior Incompleto , jogador de futebol , 25000.2 , 5 , 2 , 1.7 , 65.4
+222222222 , 22 , Masculino , Amarelo , Ensino Medio Completo , reporter , 5000.0 , 0 , 0 , 1.65 , 62.0
