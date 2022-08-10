@@ -1,7 +1,7 @@
 ---
 title: "Relatório"
 author: "Igor Isidoro"
-date: "2022-08-09"
+date: "09/08/2022"
 output: html_document
 ---
 
@@ -12,28 +12,53 @@ tamanhoAmostra = nrow(tabela)
 ```
 
 ## Idade
-CLorem
 
-```{r idade, echo=FALSE}
+Amplitude
+```{r idadeAmplitude, echo=FALSE}
 rolIdades = sort(tabela$Idade)
-max(rolIdades) - min(rolIdades) #amplitude
-mean(rolIdades) #media
+max(rolIdades) - min(rolIdades)
+```
+
+Média
+```{r idadeMedia, echo=FALSE}
+mean(rolIdades)
+```
+
+Quartis 1, 2 e 3 respectivamente
+```{r idadeQuartis, echo=FALSE}
 quantile(rolIdades, 0.25) #quartil 1
 quantile(rolIdades, 0.5) #quartil 2 (mediana)
 quantile(rolIdades, 0.75) #quartil 3
+```
+
+Frequência absoluta, relativa e percentual respectivamente
+```{r idadeFrequencias, echo=FALSE}
 print(table(rolIdades)) #frequencia absoluta
 print(table(rolIdades)/tamanhoAmostra) #frequencia relativa
 print(table(rolIdades)/tamanhoAmostra*100) #frequencia percentual
-var(rolIdades)#variancia
-sd(rolIdades)#desvio padrao
+```
 
+Variância e Desvio Padrão respectivamente
+```{r idadeVarDesvio, echo=FALSE}
+var(rolIdades)
+sd(rolIdades)
+```
+
+```{r idadeGraficos, echo=FALSE}
 boxplot(tabela$Idade, main="Boxplot: Idade", col="darkblue")
 histogramaIdades <-hist(tabela$Idade, col="darkblue", border="black", prob=FALSE, main="Histograma de Idades", xlab="Idades", ylab="Densidade");
 ```
-
+  
+  * Dados mais concentrados no intervalo de [20, 30]
+  
+  * 65% dos dados se encontram abaixo da média
+  
+  * Conjunto não uniforme
+   
+   
 ## Sexo
 
-
+Frequência absoluta, relativa e percentual respectivamente
 ```{r sexo, echo=FALSE}
 print(table(tabela$Sexo)) #frequencia absoluta
 print(table(tabela$Sexo)/tamanhoAmostra) #frequencia relativa
@@ -43,10 +68,12 @@ barplot(table(tabela$Sexo), col="darkblue", border="black", main = "Grafico Sexo
 pie(table(tabela$Sexo))
 ```
 
+  * Número de pessoas do sexo masculino e feminino se encontra equiparado
+  
+  
 ## Raça
 
-Lorem
-
+Frequência absoluta, relativa e percentual respectivamente
 ```{r raca, echo=FALSE}
 print(table(tabela$Raca)) #frequencia absoluta
 print(table(tabela$Raca)/tamanhoAmostra) #frequencia relativa
@@ -55,11 +82,13 @@ print(table(tabela$Raca)/tamanhoAmostra*100) #frequencia percentual
 barplot(table(tabela$Raca), col="darkblue", border="black", main = "Grafico Raças")
 pie(table(tabela$Raca))
 ```
-
+  
+  * Conjunto uniforme de dados, com exceção da raça "Preto" que houve um menor número de pessoas em relação ao número de pessoas das demais raças
+  
+  
 ## Escolaridade
 
-Lorem
-
+Frequência absoluta, relativa e percentual respectivamente
 ```{r escolaridade, echo=FALSE}
 print(table(tabela$Escolaridade)) #frequencia absoluta
 print(table(tabela$Escolaridade)/tamanhoAmostra) #frequencia relativa
@@ -68,11 +97,13 @@ print(table(tabela$Escolaridade)/tamanhoAmostra*100) #frequencia percentual
 barplot(table(tabela$Escolaridade), col="darkblue", border="black", main = "Grafico Escolaridades")
 pie(table(tabela$Escolaridade))
 ```
-
+  
+  * 60% das pessoas que realizaram a pesquisa já cursaram ou se encontram cursando uma universidade
+  
+  
 ## Profissão
 
-Lorem
-
+Frequência absoluta, relativa e percentual respectivamente
 ```{r profissao, echo=FALSE}
 print(table(tabela$Profissao)) #frequencia absoluta
 print(table(tabela$Profissao)/tamanhoAmostra) #frequencia relativa
@@ -81,23 +112,43 @@ print(table(tabela$Profissao)/tamanhoAmostra*100) #frequencia percentual
 pie(table(tabela$Profissao))
 ```
 
+  * Conjunto uniforme de dados, com exceção de designer e desempregado(a) que se destacaram dos demais
+  
+  
 ## Salario
 
-Lorem
-
-```{r salario, echo=FALSE}
+Amplitude
+```{r salarioAmplitude, echo=FALSE}
 rolSalarios = sort(tabela$Salario)
 max(rolSalarios) - min(rolSalarios) #amplitude
+```
+
+Média
+```{r salarioMedia, echo=FALSE}
 mean(rolSalarios) #media
+```
+
+Quartis 1, 2 e 3 respectivamente
+```{r salarioQuartis, echo=FALSE}
 quantile(rolSalarios, 0.25) #quartil 1
 quantile(rolSalarios, 0.5) #quartil 2 (mediana)
 quantile(rolSalarios, 0.75) #quartil 3
+```
+
+Frequência absoluta, relativa e percentual respectivamente
+```{r salarioFrequencias, echo=FALSE}
 print(table(rolSalarios)) #frequencia absoluta
 print(table(rolSalarios)/tamanhoAmostra) #frequencia relativa
 print(table(rolSalarios)/tamanhoAmostra*100) #frequencia percentual
+```
+
+Variância e Desvio Padrão respectivamente
+```{r salarioVarDesvio, echo=FALSE}
 var(rolSalarios)#variancia
 sd(rolSalarios)#desvio padrao
+```
 
+```{r salarioGraficos, echo=FALSE}
 boxplot(tabela$Salario, main="Boxplot: Salario", col="darkblue")
 histogramaSalarios <-hist(tabela$Salario, col="darkblue", border="black", prob=FALSE, main="Histograma de Salarios",xlab="Salarios", ylab="Densidade");
 xfit <- seq(min(tabela$Salario),max(tabela$Salario))
@@ -105,99 +156,192 @@ yfit <- dnorm(xfit,mean=mean(tabela$Salario),sd=sd(tabela$Salario))
 yfit <- yfit*diff(histogramaSalarios$mids)*length(tabela$Salario)
 lines(xfit, yfit, col="red", lwd=2)
 ```
-
+  
+  * Pode-se notar que a maior parte dos entrevistados possui um salário entre 0 e 5000.00 reais, porém houveram 2 ouliers sendo um com salário de 15000.00 reais e outro com salário de 25000.00 reais
+  
+  
 ## Número de Viagens ao exterior
 
-Lorem
-
-```{r numViagensExterio, echo=FALSE}
+Amplitude
+```{r numViagensExteriorAmplitude, echo=FALSE}
 rolNumViagens = sort(tabela$Num..Viagens.ao.Exterior)
 max(rolNumViagens) - min(rolNumViagens) #amplitude
+```
+
+Média
+```{r numViagensExteriorMedia, echo=FALSE}
 mean(rolNumViagens) #media
+```
+
+Quartis 1, 2 e 3 respectivamente
+```{r numViagensExteriorQuartis, echo=FALSE}
 quantile(rolNumViagens, 0.25) #quartil 1
 quantile(rolNumViagens, 0.5) #quartil 2 (mediana)
 quantile(rolNumViagens, 0.75) #quartil 3
+```
+
+Frequência absoluta, relativa e percentual respectivamente
+```{r numViagensExteriorFrequencias, echo=FALSE}
 print(table(rolNumViagens)) #frequencia absoluta
 print(table(rolNumViagens)/tamanhoAmostra) #frequencia relativa
 print(table(rolNumViagens)/tamanhoAmostra*100) #frequencia percentual
+```
+
+Variância e Desvio Padrão respectivamente
+```{r numViagensExteriorVarDesvio, echo=FALSE}
 var(rolNumViagens)#variancia
 sd(rolNumViagens)#desvio padrao
+```
 
+```{r numViagensExteriorGrafico, echo=FALSE}
 boxplot(tabela$Num..Viagens.ao.Exterior, main="Boxplot: Num. Viagens ao Exterior", col="darkblue")
 ```
 
+  * 60% das pessoas nunca viajaram para o exterior, porém foram notados 2 outliers, sendo um com 4 viagens e outro com 7.
+  
+  
 ## Número de Filhos
 
-Lorem
-
-```{r numFilhos, echo=FALSE}
+Amplitude
+```{r numFilhosAmplitude, echo=FALSE}
 rolNumFilhos = sort(tabela$Num.de.Filhos)
 max(rolNumFilhos) - min(rolNumFilhos) #amplitude
+```
+
+Média
+```{r numFilhosMedia, echo=FALSE}
 mean(rolNumFilhos) #media
+```
+
+Quartis 1, 2 e 3 respectivamente
+```{r numFilhosQuartis, echo=FALSE}
 quantile(rolNumFilhos, 0.25) #quartil 1
 quantile(rolNumFilhos, 0.5) #quartil 2 (mediana)
 quantile(rolNumFilhos, 0.75) #quartil 3
+```
+
+Frequência absoluta, relativa e percentual respectivamente
+```{r numFilhosFrequencias, echo=FALSE}
 print(table(rolNumFilhos)) #frequencia absoluta
 print(table(rolNumFilhos)/tamanhoAmostra) #frequencia relativa
 print(table(rolNumFilhos)/tamanhoAmostra*100) #frequencia percentual
+```
+
+Variância e Desvio Padrão respectivamente
+```{r numFilhosVarDesvio, echo=FALSE}
 var(rolNumFilhos)#variancia
 sd(rolNumFilhos)#desvio padrao
+```
 
+```{r numFilhosGraficos, echo=FALSE}
 boxplot(tabela$Num.de.Filhos, main="Boxplot: Num. Filhos", col="darkblue")
 histogramaNumFilhos <-hist(tabela$Num.de.Filhos, col="darkblue", border="black", prob=FALSE, main="Histograma Num. Filhos", xlab="Num. Filhos", ylab="Densidade");
 ```
-
+  
+  * Conjunto não é uniforme visto que 45% das pessoas não tem filhos e 20% possui apenas 1 filhos,
+  
+  
 ## Altura
 
-Lorem
-
-```{r altura, echo=FALSE}
+Amplitude
+```{r alturaAmplitude, echo=FALSE}
 rolAlturas = sort(tabela$Altura)
 max(rolAlturas) - min(rolAlturas) #amplitude
+```
+
+Média
+```{r alturaMedia, echo=FALSE}
 mean(rolAlturas) #media
+```
+
+Quartis 1, 2 e 3 respectivamente
+```{r alturaQuartis, echo=FALSE}
 quantile(rolAlturas, 0.25) #quartil 1
 quantile(rolAlturas, 0.5) #quartil 2 (mediana)
 quantile(rolAlturas, 0.75) #quartil 3
+```
+
+Frequência absoluta, relativa e percentual respectivamente
+```{r alturaFrequencias, echo=FALSE}
 print(table(rolAlturas)) #frequencia absoluta
 print(table(rolAlturas)/tamanhoAmostra) #frequencia relativa
 print(table(rolAlturas)/tamanhoAmostra*100) #frequencia percentual
-var(rolAlturas)#variancia
-sd(rolAlturas)#desvio padrao
-
-boxplot(tabela$Altura, main="Boxplot: Altura", col="darkblue")
 ```
 
+Variância e Desvio Padrão respectivamente
+```{r alturaVarDesvio, echo=FALSE}
+var(rolAlturas)#variancia
+sd(rolAlturas)#desvio padrao
+```
+
+```{r alturaGrafico, echo=FALSE}
+boxplot(tabela$Altura, main="Boxplot: Altura", col="darkblue")
+```
+  
+  * Conjunto uniforme, com uma variância baixa o que significa que a maior parte dos valores se encontra em torno da média
+  
+  
 ## Peso
 
-Lorem
-
-```{r peso, echo=FALSE}
-rolPesos = sort(tabela$Altura)
+Amplitude
+```{r pesoAmplitude, echo=FALSE}
+rolPesos = sort(tabela$Peso)
 max(rolPesos) - min(rolPesos) #amplitude
+```
+
+Média
+```{r pesoMedia, echo=FALSE}
 mean(rolPesos) #media
+```
+
+Quartis 1, 2 e 3 respectivamente
+```{r pesoQuartis, echo=FALSE}
 quantile(rolPesos, 0.25) #quartil 1
 quantile(rolPesos, 0.5) #quartil 2 (mediana)
 quantile(rolPesos, 0.75) #quartil 3
+```
+
+Frequência absoluta, relativa e percentual respectivamente
+```{r pesoFrequencias, echo=FALSE}
 print(table(rolPesos)) #frequencia absoluta
 print(table(rolPesos)/tamanhoAmostra) #frequencia relativa
 print(table(rolPesos)/tamanhoAmostra*100) #frequencia percentual
+```
+
+Variância e Desvio Padrão respectivamente
+```{r pesoVarDesvio, echo=FALSE}
 var(rolPesos)#variancia
 sd(rolPesos)#desvio padrao
+```
 
+```{r pesoGraficos, echo=FALSE}
 boxplot(tabela$Peso, main="Boxplot: Peso", col="darkblue")
 histogramaPesos <-hist(tabela$Peso, col="darkblue", border="black", prob=FALSE, main="Histograma de Pesos",
 xlab="Pesos", ylab="Densidade");
 ```
+  
+  * 80% das pessoas entrevistadas se encontram no intevalo de [60, 90]
+  
+  
+## Correlações com Gráficos de Dispersão
 
-
-## Correlações
-
-Lorem
-
-```{r graficosDispersao, echo=FALSE}
+```{r graficosDispersao1, echo=FALSE}
 plot(tabela$Altura, tabela$Peso, main = "Dispersão Altura X Peso")
+```
 
+  * Pode-se notar uma correlação positiva, visto que conforme a altura aumenta o peso aumenta
+
+
+```{r graficosDispersao2, echo=FALSE}
 plot(tabela$Idade, tabela$Salario, main = "Dispersão Idade X Salario")
+```
+  
+  * Com base no conjunto de dados e no gráfico apresentado poderíamos concluir que a idade não tem relação com o salário
+  
 
+```{r graficosDispersao3, echo=FALSE}
 plot(tabela$Num..Viagens.ao.Exterior, tabela$Salario, main = "Dispersão Num. Viagens ao Exterior X Salario")
 ```
+  
+  * A partir do gráfico pode-se notar que o salário não tem relação com o número de viajens ao exterior, dado que num conjunto de 20 entrevistados, 16 pessoas possuem o salário na faixa de 0 à 5000 reais e apenas 3 dessas 16 pessoas, viajaram para o exterior.
+  

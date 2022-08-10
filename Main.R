@@ -89,7 +89,7 @@ sd(rolAlturas)#desvio padrao
 boxplot(tabela$Altura, main="Boxplot: Altura", col="darkblue")
 
 #PESO/////////////////////////////////////////////////////////////////////
-rolPesos = sort(tabela$Altura)
+rolPesos = sort(tabela$Peso)
 max(rolPesos) - min(rolPesos) #amplitude
 mean(rolPesos) #media
 quantile(rolPesos, 0.25) #quartil 1
